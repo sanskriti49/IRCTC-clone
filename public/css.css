@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0px;
+    text-decoration: none;
+    box-sizing: border-box;
+    outline: none;
+
+}
+.Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    border: 2px solid black;
+}
+h1{
+    background-color: aqua;
+    border: 2px solid gray;
+}

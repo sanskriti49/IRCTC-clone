@@ -1,0 +1,1419 @@
+/* --- GLOBAL STYLES & VARIABLES --- */
+:root {
+	--bg-dark: #0d0d1a;
+	--bg-dark-section: #0c0c17;
+	--form-bg: rgba(21, 23, 41, 0.7);
+	--card-bg: #1f233a;
+	--input-bg: #2a2d42;
+	--primary-blue: #4a72ff;
+	--text-primary: #ffffff;
+	--text-secondary: #a0aec0;
+	--border-glass: rgba(255, 255, 255, 0.1);
+	--border-card-hover: var(--primary-blue);
+	--marquee-bg: #ef4444; /* red-500 */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+body {
+	background-color: var(--bg-dark);
+	color: var(--text-primary);
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* --- MARQUEE / TICKER --- */
+.marquee-container {
+	background-color: var(--marquee-bg);
+	color: white;
+	padding: 0.75rem 0;
+	overflow: hidden;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.marquee-content {
+	display: flex;
+	animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-item {
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+
+.separator {
+	margin: 0 2.5rem; /* Restores the space between text blocks */
+}
+
+@keyframes marquee-scroll {
+	from {
+		transform: translateX(0%);
+	}
+	to {
+		transform: translateX(
+			-50%
+		); /* This moves the content exactly one text-block width to the left */
+	}
+}
+/* --- PAGE WRAPPER --- */
+.page-wrapper {
+	background-color: var(--bg-dark);
+}
+
+/* --- HERO SECTION & BACKGROUND --- */
+.hero-section {
+	position: relative;
+	min-height: 100vh;
+	background-image: url("https://images.unsplash.com/photo-1605640243296-2d54b45564a0?q=80&w=2070&auto=format&fit=crop");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 5%;
+}
+.hero-section::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 50%;
+	background-image: linear-gradient(
+			to right,
+			rgba(74, 114, 255, 0.1) 1px,
+			transparent 1px
+		),
+		linear-gradient(to bottom, rgba(74, 114, 255, 0.1) 1px, transparent 1px);
+	background-size: 40px 40px;
+	mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+	z-index: 1;
+}
+
+/* --- HEADER --- */
+.main-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	width: 100%;
+	top: 0;
+
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+	z-index: 10;
+}
+.main-nav {
+	display: flex;
+	gap: 2.5rem;
+	font-weight: 500;
+}
+.main-nav a {
+	transition: color 0.3s;
+}
+.main-nav a:hover {
+	color: var(--primary-blue);
+}
+.header-actions {
+	display: flex;
+	gap: 1rem;
+}
+.btn {
+	padding: 0.6rem 1.5rem;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	border: 2px solid transparent;
+	transition: all 0.3s ease;
+}
+.btn-transparent {
+	color: var(--text-primary);
+}
+.btn-transparent:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+.btn-primary {
+	background-color: var(--primary-blue);
+	border-color: var(--primary-blue);
+}
+.btn-primary:hover {
+	background-color: #3b5bcc;
+	border-color: #3b5bcc;
+}
+/* Find and replace this entire block in your style.css */
+
+.btn-outline {
+	border-color: var(--primary-blue); /* Was --text-secondary */
+	background-color: transparent;
+	color: var(--primary-blue); /* Added this line */
+}
+.btn-outline:hover {
+	background-color: var(--primary-blue); /* Was a transparent white */
+	border-color: var(--primary-blue); /* Was --text-primary */
+	color: var(--text-primary); /* Added this line */
+}
+
+/* --- HERO CONTENT & BOOKING FORM --- */
+.hero-content {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding-top: 2rem;
+	z-index: 5;
+}
+.hero-content h1 {
+	font-size: 3.5rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+.hero-content p {
+	font-size: 1.5rem;
+	font-weight: 500;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+.booking-form {
+	background: var(--form-bg);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border: 1px solid var(--border-glass);
+	border-radius: 20px;
+	padding: 2rem;
+	width: 100%;
+	max-width: 900px;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+.booking-form h2 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: var(--text-secondary);
+	text-align: left;
+}
+.form-group {
+	text-align: left;
+}
+.form-group label {
+	display: block;
+	font-size: 0.8rem;
+	color: var(--text-secondary);
+	margin-bottom: 0.5rem;
+}
+
+.input-wrapper:focus-within {
+	border-color: var(--primary-blue);
+}
+.input-wrapper input {
+	background: none;
+	outline: none;
+	color: var(--text-primary);
+	font-size: 1rem;
+	width: 100%;
+}
+.input-wrapper input::placeholder {
+	color: var(--text-secondary);
+}
+.input-wrapper i {
+	color: var(--text-secondary);
+}
+.input-wrapper span {
+	flex-grow: 1;
+	color: var(--text-primary);
+}
+.input-wrapper .fa-chevron-down {
+	font-size: 0.8rem;
+}
+.form-row-location,
+.form-row-details,
+.form-row-filters,
+.form-row-actions {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+.form-row-location .form-group,
+.form-row-details .form-group {
+	flex: 1;
+}
+.swap-btn {
+	background-color: var(--primary-blue);
+	border: none;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	color: white;
+	cursor: pointer;
+	margin-top: 1.3rem;
+	transition: transform 0.3s;
+	flex-shrink: 0;
+}
+.swap-btn:hover {
+	transform: rotate(180deg);
+}
+.filter-pills {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+.filter-pills span {
+	background-color: var(--input-bg);
+	padding: 0.5rem 1rem;
+	border-radius: 20px;
+	font-size: 0.8rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+.filter-pills span:hover {
+	background-color: #3e425e;
+}
+.form-row-actions {
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+/* --- GENERIC CONTENT SECTION STYLING --- */
+.content-section {
+	padding: 80px 5%;
+	text-align: center;
+	background-color: var(--bg-dark-section);
+}
+.content-section h2 {
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+	color: var(--text-primary);
+}
+.content-section p {
+	font-size: 1.1rem;
+	color: var(--text-secondary);
+	max-width: 600px;
+	margin: 0 auto 40px auto;
+}
+
+/* --- SERVICES SECTION (DARK THEME) --- */
+.services-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 30px;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.service-card {
+	background-color: var(--card-bg);
+	padding: 30px 20px;
+	border-radius: 12px;
+	border: 1px solid transparent;
+	transition: transform 0.3s, border-color 0.3s;
+}
+.service-card:hover {
+	transform: translateY(-10px);
+	border-color: var(--border-card-hover);
+}
+.service-card i {
+	font-size: 3rem;
+	color: var(--primary-blue);
+	margin-bottom: 15px;
+}
+.service-card h3 {
+	font-size: 1rem;
+	color: var(--text-primary);
+	font-weight: 600;
+}
+
+/* --- HOLIDAYS SECTION (DARK THEME) --- */
+.holidays-section {
+	background-color: var(--bg-dark);
+}
+.holidays-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.holiday-card {
+	background-color: var(--card-bg);
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid var(--border-glass);
+	transition: transform 0.3s;
+}
+.holiday-card:hover {
+	transform: translateY(-5px);
+}
+.holiday-card img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+.holiday-content {
+	padding: 25px;
+	text-align: left;
+}
+.holiday-content h3 {
+	font-size: 1.3rem;
+	margin-bottom: 10px;
+}
+.holiday-content p {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: var(--text-secondary);
+	margin: 0 0 20px 0;
+}
+.holiday-content a {
+	color: var(--primary-blue);
+	font-weight: 600;
+	transition: color 0.3s;
+}
+.holiday-content a:hover {
+	color: #83a0ff;
+}
+
+/* --- HELP SECTION --- */
+.help-section {
+	background-color: var(--bg-dark-section);
+}
+.phone-number {
+	color: var(--primary-blue);
+	font-weight: 600;
+}
+
+/* --- FOOTER (DARK THEME) --- */
+.footer {
+	background-color: #06060c;
+	padding: 40px 5%;
+}
+.footer-content {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.footer-social {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid var(--border-glass);
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+}
+.footer-social h2 {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+.social-icons {
+	display: flex;
+	gap: 15px;
+}
+.social-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	color: white;
+	transition: transform 0.3s;
+}
+.social-icon:hover {
+	transform: scale(1.1);
+}
+.facebook {
+	background-color: #1877f2;
+}
+.twitter {
+	background-color: #1da1f2;
+}
+.youtube {
+	background-color: #ff0000;
+}
+.instagram {
+	background: radial-gradient(
+		circle at 30% 107%,
+		#fdf497 0%,
+		#fdf497 5%,
+		#fd5949 45%,
+		#d6249f 60%,
+		#285aeb 90%
+	);
+}
+.linkedin {
+	background-color: #0a66c2;
+}
+.footer-bottom {
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1024px) {
+	.main-nav {
+		display: none;
+	}
+	.hero-content h1 {
+		font-size: 2.5rem;
+	}
+	.form-row-details {
+		flex-wrap: wrap;
+	}
+	.form-row-details .form-group {
+		width: calc(50% - 0.75rem);
+	}
+	.footer-social {
+		flex-direction: column;
+		gap: 20px;
+	}
+}
+@media (max-width: 768px) {
+	.hero-section {
+		padding: 1rem 5%;
+	}
+	.form-row-location,
+	.form-row-filters,
+	.form-row-details {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.swap-btn {
+		margin-top: 0;
+		width: 100%;
+		border-radius: 8px;
+	}
+	.form-row-details .form-group {
+		width: 100%;
+	}
+	.form-row-actions {
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.btn {
+		width: 100%;
+	}
+}
+/* --- Add this entire block to your style.css file --- */
+
+/* --- NEW POPULAR SERVICES SECTION --- */
+.popular-services-section {
+	background-color: var(--bg-dark);
+}
+
+.popular-services-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.25rem;
+	max-width: 56rem;
+	margin: 0 auto;
+}
+
+.popular-service-card {
+	background-color: #181a1c; /* Darker card background from your snippet */
+	width: 9rem;
+	height: 9rem;
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
+}
+
+.popular-service-card:hover {
+	transform: translateY(-5px);
+	background-color: var(--card-bg); /* Lighter hover from our theme */
+	border-color: var(--primary-blue);
+}
+
+.popular-service-card i {
+	font-size: 3rem;
+	color: var(--primary-blue);
+}
+
+.popular-service-card span {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--text-primary);
+}
+
+/* --- UPDATED HELP SECTION STYLES --- */
+
+.help-section-img {
+	width: 250px;
+	margin-bottom: 2rem;
+	aspect-ratio: ;
+}
+
+.phone-number {
+	color: var(--primary-blue);
+	font-weight: 600;
+}
+
+/* --- REMOVE OR REPLACE these old service styles --- */
+/* 
+.services-section { ... }
+.services-grid { ... }
+.service-card { ... }
+*/
+/* --- GLOBAL STYLES & VARIABLES --- */
+:root {
+	/* Light Theme Vars (for Header/Hero) */
+	--light-primary: #fb792b;
+	--light-secondary: #213d77;
+	--light-bg: #ffffff;
+	--light-bg-grey: #f2f2f2;
+	--light-border: #e0e0e0;
+	--light-text-dark: #333;
+
+	/* Dark Theme Vars (for Content/Footer) */
+	--dark-bg-section: #0c0c17;
+	--dark-card-bg: #1f233a;
+	--dark-primary-blue: #4a72ff;
+	--dark-text-primary: #ffffff;
+	--dark-text-secondary: #a0aec0;
+	--dark-border-glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+html {
+	scroll-behavior: smooth;
+}
+body {
+	background-color: var(--light-bg-grey);
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* ======================= HEADER (Light Theme) ======================= */
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: var(--light-bg);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+}
+.header-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 5%;
+	background-color: var(--light-secondary);
+	color: white;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+.header-top a {
+	padding: 0 10px;
+	transition: color 0.3s;
+}
+.header-top a:hover {
+	color: var(--light-primary);
+}
+.alert-btn {
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 4px 12px;
+	border-radius: 4px;
+}
+.header-main {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 5%;
+}
+.logo img,
+.logo-right img {
+	width: 40px;
+}
+.main-nav {
+	display: flex;
+	gap: 25px;
+}
+.nav-item {
+	font-weight: 600;
+	font-size: 0.95rem;
+	padding: 10px 0;
+	position: relative;
+	transition: color 0.3s;
+}
+.nav-item i {
+	margin-right: 6px;
+	color: var(--light-secondary);
+}
+.nav-item:hover,
+.nav-item.active {
+	color: var(--light-primary);
+}
+.nav-item::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background-color: var(--light-primary);
+	transform: scaleX(0);
+	transition: transform 0.3s ease;
+}
+.nav-item:hover::after,
+.nav-item.active::after {
+	transform: scaleX(1);
+}
+
+/* ======================= HERO SECTION & CAROUSEL (Light Theme) ======================= */
+.main-content {
+	padding-top: 105px; /* Height of fixed header */
+}
+.hero-section {
+	position: relative;
+	width: 100%;
+	height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.carousel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.carousel-track {
+	display: flex;
+	height: 100%;
+	transition: transform 0.5s ease-in-out;
+}
+.slide {
+	min-width: 100%;
+	height: 100%;
+}
+.slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.carousel-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.4);
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	padding: 15px;
+	cursor: pointer;
+	z-index: 10;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s;
+}
+.carousel-button:hover {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.prev {
+	left: 20px;
+}
+.next {
+	right: 20px;
+}
+
+/* --- Booking Form (Light Theme) --- */
+.booking-container {
+	position: relative;
+	z-index: 5;
+	margin-left: 10%;
+	background-color: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(5px);
+	border-radius: 12px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+	width: 450px;
+}
+.booking-header {
+	background-color: var(--light-secondary);
+	color: white;
+	padding: 15px 25px;
+}
+.booking-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+.booking-title i {
+	margin-right: 10px;
+}
+.booking-form {
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.form-row {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+.form-group {
+	position: relative;
+	flex-grow: 1;
+}
+.form-group i {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 15px;
+	color: #999;
+}
+.form-group input,
+.form-group select {
+	width: 100%;
+	padding: 12px 12px 12px 45px;
+	border: 1px solid var(--light-border);
+	border-radius: 8px;
+	font-size: 1rem;
+	background-color: var(--light-bg);
+}
+.form-group input:focus,
+.form-group select:focus {
+	outline: none;
+	border-color: var(--light-primary);
+	box-shadow: 0 0 0 3px rgba(251, 121, 43, 0.2);
+}
+.form-group label {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 45px;
+	color: #999;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+.form-group input:focus + label,
+.form-group input:valid + label {
+	top: -8px;
+	left: 10px;
+	font-size: 0.75rem;
+	background-color: var(--light-bg);
+	padding: 0 5px;
+	color: var(--light-primary);
+}
+.swap-btn {
+	background: none;
+	border: 1px solid var(--light-border);
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	flex-shrink: 0;
+	transition: background-color 0.3s, transform 0.3s;
+}
+.swap-btn:hover {
+	background-color: var(--light-bg-grey);
+	transform: rotate(180deg);
+}
+.form-options {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.9rem;
+}
+.form-options label {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	color: var(--light-text-dark);
+}
+.search-btn {
+	background-color: var(--light-primary);
+	color: white;
+	border: none;
+	padding: 15px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+.search-btn:hover {
+	background-color: #e06c21;
+}
+
+/* ======================= DARK THEME SECTIONS ======================= */
+.content-section {
+	padding: 80px 5%;
+	text-align: center;
+	color: var(--dark-text-primary);
+}
+.content-section h2 {
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+}
+
+/* --- Popular Services (Dark Theme) --- */
+.popular-services-section {
+	background-color: #0d0d1a;
+}
+.popular-services-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.25rem;
+	max-width: 56rem;
+	margin: 0 auto;
+}
+.popular-service-card {
+	background-color: #181a1c;
+	width: 9rem;
+	height: 9rem;
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: all 0.3s;
+}
+.popular-service-card:hover {
+	transform: translateY(-5px);
+	background-color: var(--dark-card-bg);
+	border-color: var(--dark-primary-blue);
+}
+.popular-service-card i {
+	font-size: 3rem;
+	color: var(--dark-primary-blue);
+}
+.popular-service-card span {
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+/* --- Holidays (Dark Theme) --- */
+.holidays-section {
+	background-color: var(--dark-bg-section);
+}
+.holidays-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 30px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.holiday-card {
+	background-color: var(--dark-card-bg);
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid var(--dark-border-glass);
+	transition: transform 0.3s;
+}
+.holiday-card:hover {
+	transform: translateY(-5px);
+}
+.holiday-card img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+.holiday-content {
+	padding: 25px;
+	text-align: left;
+}
+.holiday-content h3 {
+	font-size: 1.3rem;
+	margin-bottom: 10px;
+}
+.holiday-content p {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: var(--dark-text-secondary);
+	margin: 0 0 20px 0;
+}
+.holiday-content a {
+	color: var(--dark-primary-blue);
+	font-weight: 600;
+	transition: color 0.3s;
+}
+.holiday-content a:hover {
+	color: #83a0ff;
+}
+
+/* --- Help Section (Dark Theme with BG Image) --- */
+.help-section {
+	background-color: var(--dark-bg-section);
+	position: relative;
+	overflow: hidden;
+}
+.help-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: fit-content;
+	height: 100%;
+	/* background-image: url("https://cdni.iconscout.com/illustration/premium/thumb/customer-service-3483648-2912019.png"); */
+	background-image: url("../src/any-questions.png");
+
+	background-repeat: no-repeat;
+	opacity: 0.9; /* Make background image faint */
+	z-index: 1;
+}
+.help-section-content {
+	position: relative;
+	z-index: 2; /* Ensure text is on top of the background */
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	gap: 1.5rem; /* Creates space between the heading and the button */
+}
+
+.help-section h2 {
+	margin-bottom: 0; /* Remove default margin as gap is used */
+	line-height: 1.4; /* Improve line spacing */
+}
+
+/* New button style */
+.help-section-button {
+	background-color: var(--dark-primary-blue);
+	color: var(--dark-text-primary);
+	border: none;
+	align-items: left;
+	padding: 12px 28px;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	position: relative;
+	z-index: 200;
+	transition: background-color 0.3s ease;
+}
+
+.help-section-button:hover {
+	background-color: #3b5bcc; /* Darker blue on hover */
+}
+
+.help-section-button .phone-number {
+	font-weight: 600; /* Make the number slightly bolder */
+	margin-left: 8px; /* Add a little space after "Call" */
+	color: wheat;
+}
+
+/* ======================= FOOTER (Dark Theme) ======================= */
+.footer {
+	background-color: #06060c;
+	padding: 40px 5%;
+	color: var(--dark-text-primary);
+}
+.footer-content {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.footer-social {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid var(--dark-border-glass);
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+}
+.footer-social h2 {
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+.social-icons {
+	display: flex;
+	gap: 15px;
+}
+.social-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	color: white;
+	transition: transform 0.3s;
+}
+.social-icon:hover {
+	transform: scale(1.1);
+}
+.facebook {
+	background-color: #1877f2;
+}
+.twitter {
+	background-color: #1da1f2;
+}
+.youtube {
+	background-color: #ff0000;
+}
+.instagram {
+	background: radial-gradient(
+		circle at 30% 107%,
+		#fdf497 0%,
+		#fdf497 5%,
+		#fd5949 45%,
+		#d6249f 60%,
+		#285aeb 90%
+	);
+}
+.linkedin {
+	background-color: #0a66c2;
+}
+.footer-bottom {
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--dark-text-secondary);
+}
+
+/* --- Responsive styles... --- */
+/* --- GLOBAL STYLES & VARIABLES --- */
+:root {
+	--bg-dark: #0d0d1a;
+	--bg-dark-section: #0c0c17;
+	--form-bg: rgba(21, 23, 41, 0.7);
+	--card-bg: #1f233a;
+	--input-bg: #2a2d42;
+	--primary-blue: #4a72ff;
+	--text-primary: #ffffff;
+	--text-secondary: #a0aec0;
+	--border-glass: rgba(255, 255, 255, 0.1);
+	--border-card-hover: var(--primary-blue);
+	--marquee-bg: #ef4444;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+body {
+	background-color: var(--bg-dark);
+	color: var(--text-primary);
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* --- MARQUEE --- */
+.marquee-container {
+	background-color: var(--marquee-bg);
+	color: white;
+	padding: 0.75rem 0;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+.marquee-content {
+	display: inline-block;
+	animation: marquee-scroll 40s linear infinite;
+}
+.marquee-item {
+	display: inline-block;
+}
+.separator {
+	margin: 0 2.5rem;
+}
+@keyframes marquee-scroll {
+	from {
+		transform: translateX(0%);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* --- HERO SECTION & CAROUSEL BACKGROUND --- */
+.hero-section {
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.carousel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	overflow: hidden;
+}
+.carousel-track {
+	display: flex;
+	height: 100%;
+	transition: transform 0.5s ease-in-out;
+}
+.slide {
+	min-width: 100%;
+	height: 100%;
+}
+.slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: brightness(0.6); /* Darkens image for text readability */
+}
+.carousel-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.4);
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	padding: 15px;
+	cursor: pointer;
+	z-index: 10;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s;
+}
+.carousel-button:hover {
+	background-color: rgba(0, 0, 0, 0.7);
+}
+.prev {
+	left: 20px;
+}
+.next {
+	right: 20px;
+}
+
+/* --- HEADER (on top of carousel) --- */
+.main-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 1rem 5%;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+	z-index: 5;
+}
+/* ... (other header styles like .main-nav, .header-actions are unchanged) ... */
+
+/* --- HERO CONTENT (on top of carousel) --- */
+.hero-content {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 2rem 5%;
+	z-index: 5;
+}
+.hero-content h1 {
+	font-size: 3.5rem;
+	font-weight: 700;
+	margin-bottom: 2rem;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+.booking-form {
+	background: var(--form-bg);
+	backdrop-filter: blur(15px);
+	-webkit-backdrop-filter: blur(15px);
+	border: 1px solid var(--border-glass);
+	border-radius: 20px;
+	padding: 2rem;
+	width: 100%;
+	max-width: 900px; /* ... other form styles are unchanged ... */
+}
+
+/* --- OTHER DARK THEME SECTIONS --- */
+.content-section {
+	padding: 80px 5%;
+	text-align: center;
+	color: var(--dark-text-primary);
+}
+.content-section h2 {
+	font-size: 2.5rem;
+	margin-bottom: 40px;
+}
+.popular-services-section {
+	background-color: var(--bg-dark);
+}
+/* ... (.popular-service-card, .holidays-section, etc. are unchanged) ... */
+
+/* --- HELP SECTION (Dark with BG Image) --- */
+.help-section {
+	background-color: var(--bg-dark-section);
+	position: relative;
+	height: 500px;
+	overflow: hidden;
+	text-align: left;
+}
+.help-section::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	background-image: url("../src/any-questions.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.5;
+	z-index: 1;
+}
+.help-section-content {
+	position: relative;
+	z-index: 2;
+}
+.phone-number {
+	color: var(--dark-primary-blue);
+	font-weight: 600;
+}
+
+/* --- FOOTER (Dark Theme) --- */
+.footer {
+	background-color: #06060c; /* ... other footer styles are unchanged ... */
+}
+
+/* ======================= FOOTER (Accordion Style) ======================= */
+.site-footer {
+	background-color: #213d77; /* The official IRCTC blue */
+	color: #e0e0e0;
+	padding: 0;
+}
+
+/* --- Social Bar on Top --- */
+.footer-social-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 5%;
+	background-color: rgba(0, 0, 0, 0.1);
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.footer-social-bar span {
+	font-weight: 500;
+}
+
+.footer-social-icons {
+	display: flex;
+	gap: 10px;
+}
+
+.footer-social-icons a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white;
+	border-radius: 50%;
+	transition: background-color 0.3s;
+}
+
+.footer-social-icons a:hover {
+	background-color: var(--light-primary); /* Saffron color from light theme */
+}
+
+/* --- Accordion Grid --- */
+.footer-accordion-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	padding: 40px 5%;
+}
+
+.accordion-btn {
+	background: none;
+	border: none;
+	color: white;
+	cursor: pointer;
+	padding: 10px 0;
+	width: 100%;
+	text-align: left;
+	font-size: 1rem;
+	font-weight: 600;
+
+	align-items: center;
+	transition: color 0.3s;
+}
+
+.accordion-btn:hover {
+	color: #ffcc80; /* A light orange for hover */
+}
+
+.accordion-btn i {
+	transition: transform 0.3s ease;
+}
+
+/* Style for when accordion is active/open */
+.accordion-btn.active i {
+	transform: rotate(180deg);
+}
+
+.accordion-panel {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+.accordion-panel ul {
+	list-style: none;
+	padding: 15px 20px;
+}
+
+.accordion-panel li {
+	margin-bottom: 10px;
+}
+
+.accordion-panel a {
+	color: #e0e0e0;
+	font-size: 0.9rem;
+	transition: color 0.3s;
+}
+
+.accordion-panel a:hover {
+	color: white;
+}
+
+/* --- Bottom Bar with Copyright --- */
+.footer-bottom-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 5%;
+	background-color: rgba(0, 0, 0, 0.2);
+	font-size: 0.85rem;
+	color: #bdbdbd;
+	flex-wrap: wrap;
+	gap: 10px;
+}

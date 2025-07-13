@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>IRCTC Ticket Booking System</title>
+		<link rel="icon" type="image/png" sizes="16x16" href="../src/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- Marquee -->
+		<!-- =========== Marquee / Ticker =========== -->
+		<div class="marquee-container">
+			<div class="marquee-content">
+				<!-- First Copy -->
+				<p class="marquee-item">
+					IRCTC would never offer to install any app or request personal
+					financial information from you, such as your date of birth, debit or
+					credit card number, OTP, PIN, or CVV.
+					<span class="separator">•</span>
+				</p>
+				<!-- Second Copy (for seamless loop) -->
+				<p class="marquee-item">
+					IRCTC would never offer to install any app or request personal
+					financial information from you, such as your date of birth, debit or
+					credit card number, OTP, PIN, or CVV.
+					<span class="separator">•</span>
+				</p>
+			</div>
+		</div>
+
+		<!-- Main Wrapper -->
+		<div class="page-wrapper">
+			<!-- Hero Section -->
+			<main class="hero-section">
+				<header class="main-header">
+					<a href="#" class="logo">
+						<img
+							src="https://www.irctc.co.in/nget/assets/images/logo.png"
+							alt="IRCTC Logo"
+							style="height: 35px"
+						/>
+					</a>
+					<nav class="main-nav">
+						<a href="#">Train</a>
+						<a href="#">Buses</a>
+						<a href="#">Flights</a>
+						<a href="#">Hotels</a>
+						<a href="#">Holidays</a>
+						<a href="#">Contact us</a>
+					</nav>
+					<div class="header-actions">
+						<a href="#" class="btn btn-transparent">Register</a>
+						<a href="#" class="btn btn-primary">Login</a>
+					</div>
+				</header>
+				<div class="carousel">
+					<div class="carousel-track">
+						<div class="slide">
+							<img
+								src="https://www.irctc.co.in/nget/home_page_banner1.e6749c3d9698d1ac7608.jpg"
+								alt="Indian train journey through mountains"
+							/>
+						</div>
+						<div class="slide">
+							<img src="../src/image-1.png" alt="Vande Bharat Express Train" />
+						</div>
+						<div class="slide">
+							<img src="../src/image-2.png" alt="Train on a scenic bridge" />
+						</div>
+					</div>
+					<button class="carousel-button prev">
+						<i class="fas fa-chevron-left"></i>
+					</button>
+					<button class="carousel-button next">
+						<i class="fas fa-chevron-right"></i>
+					</button>
+				</div>
+
+				<div class="hero-content">
+					<h1>Welcome to Indian Railways</h1>
+					<p class="h1-subtext">Safety | Security | Punctuality</p>
+
+					<form class="booking-form">
+						<div class="form-row-location">
+							<div class="form-group">
+								<i class="fa-solid fa-train form-icon"></i>
+								<input
+									type="text"
+									id="from-station"
+									name="from-station"
+									required
+									placeholder=" "
+								/>
+								<label for="from-station">From Station</label>
+							</div>
+
+							<button type="button" class="swap-btn" aria-label="Swap stations">
+								<i class="fa-solid fa-right-left"></i>
+							</button>
+
+							<div class="form-group">
+								<i class="fa-solid fa-train form-icon"></i>
+								<input
+									type="text"
+									id="to-station"
+									name="to-station"
+									required
+									placeholder=" "
+								/>
+								<label for="to-station">To Station</label>
+							</div>
+						</div>
+
+						<div class="form-row-details">
+							<div class="form-group">
+								<i class="fa-regular fa-calendar-days form-icon"></i>
+								<input
+									type="date"
+									id="journey-date"
+									name="journey-date"
+									required
+								/>
+							</div>
+							<div class="form-group">
+								<i class="fa-solid fa-chair form-icon"></i>
+								<select id="train-class" name="train-class" required>
+									<option value="ALL">All Classes</option>
+									<option value="SL">Sleeper (SL)</option>
+									<option value="1A">AC First Class (1A)</option>
+									<option value="2A">AC 2 Tier (2A)</option>
+									<option value="3A">AC 3 Tier (3A)</option>
+									<option value="CC">AC Chair car (CC)</option>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<i class="fa-solid fa-ticket form-icon"></i>
+								<select id="quota" name="quota" required>
+									<option value="GN">GENERAL</option>
+									<option value="TQ">TATKAL</option>
+									<option value="PT">PREMIUM TATKAL</option>
+									<option value="LD">LADIES</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-row-filters">
+							<label class="filter-pill">
+								<input type="checkbox" name="flexible-date" />
+								<span>Flexible with Date</span>
+							</label>
+							<label class="filter-pill">
+								<input type="checkbox" name="disability-concession" />
+								<span>Divyaang Concession</span>
+							</label>
+						</div>
+
+						<div class="form-row-actions">
+							<button type="submit" class="btn btn-primary btn-search">
+								<i class="fa-solid fa-magnifying-glass"></i> Search Trains
+							</button>
+							<button type="button" class="btn btn-outline">
+								Try Ask DISHA 2.0
+							</button>
+						</div>
+					</form>
+				</div>
+			</main>
+
+			<section class="content-section services-section">
+				<h2>Have you not found the right one?</h2>
+				<p>Find a service suitable for you here.</p>
+				<div class="services-grid">
+					<a href="#" class="service-card"
+						><i class="fa-solid fa-chart-line"></i>
+						<h3>RAIL DRISHTI</h3></a
+					>
+					<a href="#" class="service-card"
+						><i class="fa-solid fa-bowl-food"></i>
+						<h3>E-CATERING</h3></a
+					>
+					<a href="#" class="service-card"
+						><i class="fa-solid fa-umbrella-beach"></i>
+						<h3>HOLIDAY PACKAGES</h3></a
+					>
+					<a href="#" class="service-card"
+						><i class="fa-solid fa-train"></i>
+						<h3>TOURIST TRAIN</h3></a
+					>
+					<a href="#" class="service-card"
+						><i class="fa-solid fa-mountain-sun"></i>
+						<h3>HILL RAILWAYS</h3></a
+					>
+					<a href="#" class="service-card"
+						><i class="fa-solid fa-train-tram"></i>
+						<h3>CHARTER TRAIN</h3></a
+					>
+				</div>
+			</section>
+
+			<section class="content-section holidays-section">
+				<h2>Holidays</h2>
+				<div class="holidays-grid">
+					<div class="holiday-card">
+						<img
+							src="https://www.irctc.co.in/nget/assets/images/exterior.jpg"
+							alt="Maharajas' Express"
+						/>
+						<div class="holiday-content">
+							<h3>Maharajas' Express</h3>
+							<p>
+								Redefining Royalty, Luxury and Comfort, Maharajas' express takes
+								you on a sojourn to the era of bygone stately splendour...
+							</p>
+							<a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+					<div class="holiday-card">
+						<img
+							src="https://www.irctc.co.in/nget/assets/images/Thailand.jpg"
+							alt="International Tour Package"
+						/>
+						<div class="holiday-content">
+							<h3>International Packages</h3>
+							<p>
+								Best deals in International Holiday packages, handpicked by
+								IRCTC, for Thailand, Dubai, Sri Lanka, Hong Kong...
+							</p>
+							<a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+					<div class="holiday-card">
+						<img
+							src="https://www.irctc.co.in/nget/assets/images/Kashmir.jpg"
+							alt="Domestic Tour Package"
+						/>
+						<div class="holiday-content">
+							<h3>Domestic Air Packages</h3>
+							<p>
+								Be it the spiritual devotee seeking blessings or the leisure
+								traveller wanting to relish the Blue mountains of North East...
+							</p>
+							<a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="content-section help-section">
+				<div class="help-section-content">
+					<h2>
+						Have a question or need assistance?
+						<br />
+						We're here to help.
+					</h2>
+				</div>
+				<button class="help-section-button">
+					Call <span class="phone-number">14646</span>
+				</button>
+			</section>
+		</div>
+
+		<footer class="site-footer">
+			<div class="footer-container">
+				<div class="footer-social-bar">
+					<span>Get Connected with us on social networks</span>
+					<div class="footer-social-icons">
+						<a
+							href="https://www.facebook.com/IRCTCofficial/"
+							aria-label="Facebook"
+							><i class="fab fa-facebook-f"></i
+						></a>
+						<a
+							href="https://instagram.com/irctc.official?igshid=yyg5byow704l"
+							aria-label="Instagram"
+							><i class="fab fa-instagram"></i
+						></a>
+						<a href="https://youtube.com/c/IRCTCOFFICIAL" aria-label="YouTube"
+							><i class="fab fa-youtube"></i
+						></a>
+						<a
+							href="https://www.linkedin.com/company/irctcofficial"
+							aria-label="LinkedIn"
+							><i class="fab fa-linkedin-in"></i
+						></a>
+						<a href="https://twitter.com/IRCTCofficial" aria-label="Twitter"
+							><i class="fab fa-twitter"></i
+						></a>
+					</div>
+				</div>
+
+				<div class="footer-accordion-grid">
+					<div class="footer-column">
+						<button class="accordion-btn">
+							IRCTC Trains <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">Book Ticket</a></li>
+								<li><a href="#">Cancel Ticket</a></li>
+								<li><a href="#">PNR Enquiry</a></li>
+							</ul>
+						</div>
+						<button class="accordion-btn">
+							General Information <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Refund Rules</a></li>
+								<li><a href="#">Policies</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="footer-column">
+						<button class="accordion-btn">
+							Important Information <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">Disability Facilities</a></li>
+								<li><a href="#">IRCTC eWallet</a></li>
+								<li><a href="#">iPAY Gateway</a></li>
+							</ul>
+						</div>
+						<button class="accordion-btn">
+							Agents <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">Find Agents</a></li>
+								<li><a href="#">For Newly Migrated Agents</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="footer-column">
+						<button class="accordion-btn">
+							Enquiries <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">Help & Support</a></li>
+								<li><a href="#">Ask Disha ChatBot</a></li>
+								<li><a href="#">Contact Us</a></li>
+							</ul>
+						</div>
+						<button class="accordion-btn">
+							How To <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">DMRC Ticket Booking</a></li>
+								<li><a href="#">Advertise with us</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="footer-column">
+						<button class="accordion-btn">
+							IRCTC Official App <i class="fas fa-angle-down"></i>
+						</button>
+						<div class="accordion-panel">
+							<ul>
+								<li><a href="#">Download on Google Play</a></li>
+								<li><a href="#">Download on App Store</a></li>
+								<li><a href="#">Mobile Zone</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer-bottom-bar">
+					<p>Copyright © 2025 - www.irctc.co.in. All Rights Reserved</p>
+					<p>Designed and Hosted by Sanskriti</p>
+				</div>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>
